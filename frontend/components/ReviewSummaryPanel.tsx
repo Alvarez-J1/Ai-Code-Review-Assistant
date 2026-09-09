@@ -25,9 +25,10 @@ export function ReviewSummaryPanel({ review }: { review: ReviewResponse }) {
           <p className="text-sm font-semibold text-muted">GitHub pull request</p>
           <div className="mt-2 flex flex-col gap-1">
             <a
+              aria-label={`Open GitHub pull request ${review.github_metadata.owner}/${review.github_metadata.repo} #${review.github_metadata.pr_number}`}
               className="break-anywhere text-base font-semibold text-brand hover:underline"
               href={review.github_metadata.html_url}
-              rel="noreferrer"
+              rel="noopener noreferrer"
               target="_blank"
             >
               {review.github_metadata.owner}/{review.github_metadata.repo} #{review.github_metadata.pr_number}
