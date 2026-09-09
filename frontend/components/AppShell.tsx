@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import { PrimaryNav } from "@/components/PrimaryNav";
+
 interface AppShellProps {
   children: React.ReactNode;
 }
@@ -27,20 +29,7 @@ export function AppShell({ children }: AppShellProps) {
               <span className="block text-sm text-muted">Structured review for diffs and PRs</span>
             </span>
           </Link>
-          <nav aria-label="Primary navigation" className="flex gap-2">
-            <Link
-              className="rounded-md border border-line bg-white px-3 py-2 text-sm font-medium text-ink transition hover:border-brand hover:text-brand"
-              href="/"
-            >
-              New Review
-            </Link>
-            <Link
-              className="rounded-md border border-line bg-white px-3 py-2 text-sm font-medium text-ink transition hover:border-brand hover:text-brand"
-              href="/reviews"
-            >
-              Recent Reviews
-            </Link>
-          </nav>
+          <PrimaryNav />
         </div>
       </header>
       <main className="mx-auto w-full max-w-6xl px-4 py-6 sm:px-6 lg:px-8" id="main-content">
