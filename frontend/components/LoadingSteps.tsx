@@ -30,7 +30,7 @@ export function LoadingSteps({ active }: { active: boolean }) {
   }
 
   return (
-    <div className="rounded-md border border-blue-200 bg-blue-50 px-4 py-3" aria-live="polite">
+    <div aria-atomic="true" className="rounded-md border border-blue-200 bg-blue-50 px-4 py-3" role="status">
       <div className="flex items-center gap-3">
         <span className="h-4 w-4 shrink-0 animate-spin rounded-full border-2 border-blue-200 border-t-brand" />
         <p className="text-sm font-medium text-blue-950">{STEPS[stepIndex]}</p>
