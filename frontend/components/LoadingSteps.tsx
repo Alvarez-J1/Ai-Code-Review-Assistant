@@ -15,6 +15,7 @@ export function LoadingSteps({ active }: { active: boolean }) {
 
   useEffect(() => {
     if (!active) {
+      setStepIndex(0);
       return;
     }
 
