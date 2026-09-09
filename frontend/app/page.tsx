@@ -21,7 +21,10 @@ export default function HomePage() {
             <ol className="mt-3 space-y-3 text-sm text-ink">
               {["Parse diff", "Preprocess chunks", "Run deterministic checks", "Analyze with OpenAI", "Deduplicate findings"].map((step) => (
                 <li className="flex gap-3" key={step}>
-                  <span className="mt-0.5 h-5 w-5 shrink-0 rounded-full bg-blue-100 text-center text-xs font-bold leading-5 text-brand">
+                  <span
+                    aria-hidden="true"
+                    className="mt-0.5 h-5 w-5 shrink-0 rounded-full bg-blue-100 text-center text-xs font-bold leading-5 text-brand"
+                  >
                     {step.charAt(0)}
                   </span>
                   <span>{step}</span>
