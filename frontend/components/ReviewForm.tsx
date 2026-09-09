@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useId, useState } from "react";
+import { FormEvent, KeyboardEvent, RefObject, useId, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 
 import { ApiError, createDiffReview, createGithubReview } from "@/lib/api";
@@ -23,6 +23,8 @@ export function ReviewForm() {
   const githubTabId = useId();
   const diffPanelId = useId();
   const githubPanelId = useId();
+  const diffTabRef = useRef<HTMLButtonElement>(null);
+  const githubTabRef = useRef<HTMLButtonElement>(null);
   const [mode, setMode] = useState<ReviewMode>("diff");
   const [diff, setDiff] = useState("");
   const [url, setUrl] = useState("");
@@ -49,6 +51,24 @@ export function ReviewForm() {
     }
   }
 
+  function selectMode(nextMode: ReviewMode) {
+    setMode(nextMode);
+    window.requestAnimationFrame(() => {
+      const nextTab = nextMode === "diff" ? diffTabRef : githubTabRef;
+      nextTab.current?.focus();
+    });
+  }
+
+  function handleTabKeyDown(event: KeyboardEvent<HTMLButtonElement>) {
+    const nextMode = mode === "diff" ? "github" : "diff";
+    const targetMode = event.key === "Home" ? "diff" : event.key === "End" ? "github" : nextMode;
+
+    if (["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) {
+      event.preventDefault();
+      selectMode(targetMode);
+    }
+  }
+
   return (
     <section className="rounded-lg border border-line bg-panel shadow-soft">
       <div className="border-b border-line px-4 pt-4 sm:px-6">
@@ -58,7 +78,9 @@ export function ReviewForm() {
             controlsId={diffPanelId}
             disabled={isSubmitting}
             id={diffTabId}
-            onClick={() => setMode("diff")}
+            onClick={() => selectMode("diff")}
+            onKeyDown={handleTabKeyDown}
+            tabRef={diffTabRef}
           >
             Paste Diff
           </TabButton>
@@ -67,7 +89,9 @@ export function ReviewForm() {
             controlsId={githubPanelId}
             disabled={isSubmitting}
             id={githubTabId}
-            onClick={() => setMode("github")}
+            onClick={() => selectMode("github")}
+            onKeyDown={handleTabKeyDown}
+            tabRef={githubTabRef}
           >
             GitHub PR
           </TabButton>
@@ -142,7 +166,9 @@ function TabButton({
   controlsId,
   disabled,
   id,
-  onClick
+  onClick,
+  onKeyDown,
+  tabRef
 }: {
   active: boolean;
   children: React.ReactNode;
@@ -150,6 +176,8 @@ function TabButton({
   disabled: boolean;
   id: string;
   onClick: () => void;
+  onKeyDown: (event: KeyboardEvent<HTMLButtonElement>) => void;
+  tabRef: RefObject<HTMLButtonElement | null>;
 }) {
   return (
     <button
@@ -163,7 +191,10 @@ function TabButton({
       disabled={disabled}
       id={id}
       onClick={onClick}
+      onKeyDown={onKeyDown}
+      ref={tabRef}
       role="tab"
+      tabIndex={active ? 0 : -1}
       type="button"
     >
       {children}
