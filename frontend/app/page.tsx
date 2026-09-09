@@ -15,7 +15,7 @@ export default function HomePage() {
           </div>
           <ReviewForm />
         </div>
-        <aside className="space-y-3">
+        <aside aria-label="Review guidance" className="space-y-3">
           <div className="rounded-lg border border-line bg-panel p-4">
             <h2 className="text-sm font-semibold uppercase tracking-wide text-muted">Review pipeline</h2>
             <ol className="mt-3 space-y-3 text-sm text-ink">
