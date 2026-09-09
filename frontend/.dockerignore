@@ -1,0 +1,12 @@
+.env
+.env.*
+!.env.example
+.next
+coverage
+components/__tests__
+node_modules
+npm-debug.log*
+next-dev.*.log
+test
+vitest.config.ts
+*.tsbuildinfo
