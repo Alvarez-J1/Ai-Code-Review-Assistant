@@ -100,6 +100,7 @@ export function FindingsList({ findings, githubUrl }: { findings: ReviewFinding[
             </label>
           </fieldset>
           <button
+            aria-label="Reset finding filters"
             className="rounded-md border border-line bg-white px-3 py-2 text-sm font-semibold text-ink transition hover:border-brand hover:text-brand"
             onClick={resetFilters}
             type="button"
