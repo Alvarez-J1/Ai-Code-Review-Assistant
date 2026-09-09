@@ -16,7 +16,10 @@ export function AppShell({ children }: AppShellProps) {
       <header className="border-b border-line/80 bg-white/86 backdrop-blur">
         <div className="mx-auto flex w-full max-w-6xl flex-col gap-4 px-4 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
           <Link className="group flex min-w-0 items-center gap-3" href="/">
-            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-ink text-sm font-semibold text-white">
+            <span
+              aria-hidden="true"
+              className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-ink text-sm font-semibold text-white"
+            >
               AI
             </span>
             <span className="min-w-0">
