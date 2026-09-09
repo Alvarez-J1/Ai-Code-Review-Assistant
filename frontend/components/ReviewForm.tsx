@@ -1,6 +1,7 @@
 "use client";
 
-import { FormEvent, KeyboardEvent, RefObject, useEffect, useId, useRef, useState } from "react";
+import type { FormEvent, KeyboardEvent, ReactNode, RefObject } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 
 import { ApiError, createDiffReview, createGithubReview } from "@/lib/api";
@@ -190,7 +191,7 @@ function TabButton({
   tabRef
 }: {
   active: boolean;
-  children: React.ReactNode;
+  children: ReactNode;
   controlsId: string;
   disabled: boolean;
   id: string;
