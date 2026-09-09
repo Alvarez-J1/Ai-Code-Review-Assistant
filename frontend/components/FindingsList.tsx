@@ -114,11 +114,13 @@ export function FindingsList({ findings, githubUrl }: { findings: ReviewFinding[
           No findings match the current filters.
         </div>
       ) : (
-        <div className="space-y-3">
+        <ol className="space-y-3">
           {visibleFindings.map((finding, index) => (
-            <FindingCard finding={finding} githubUrl={githubUrl} key={`${finding.file}-${finding.line}-${finding.title}-${index}`} />
+            <li key={`${finding.file}-${finding.line}-${finding.title}-${index}`}>
+              <FindingCard finding={finding} githubUrl={githubUrl} />
+            </li>
           ))}
-        </div>
+        </ol>
       )}
     </section>
   );
