@@ -67,13 +67,15 @@ export function RecentReviewsClient({
           <p className="mt-2 text-sm text-muted">Create a pasted-diff or GitHub PR review and it will appear here.</p>
         </div>
       ) : (
-        <div className="space-y-3">
+        <ul className="space-y-3">
           {items.map((review) => (
-            <Link className="block" href={`/reviews/${review.review_id}`} key={review.review_id}>
-              <ReviewListItem review={review} />
-            </Link>
+            <li key={review.review_id}>
+              <Link className="block" href={`/reviews/${review.review_id}`}>
+                <ReviewListItem review={review} />
+              </Link>
+            </li>
           ))}
-        </div>
+        </ul>
       )}
 
       {hasMore ? (
