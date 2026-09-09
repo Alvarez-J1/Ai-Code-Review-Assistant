@@ -34,13 +34,13 @@ export default function HomePage() {
           </div>
           <div className="rounded-lg border border-line bg-panel p-4">
             <h2 className="text-sm font-semibold uppercase tracking-wide text-muted">Finding categories</h2>
-            <div className="mt-3 flex flex-wrap gap-2">
+            <ul className="mt-3 flex flex-wrap gap-2">
               {["bug", "edge case", "security", "performance", "readability", "testing"].map((category) => (
-                <span className="rounded-md border border-line bg-slate-50 px-2 py-1 text-xs font-semibold text-muted" key={category}>
+                <li className="rounded-md border border-line bg-slate-50 px-2 py-1 text-xs font-semibold text-muted" key={category}>
                   {category}
-                </span>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
         </aside>
       </div>
