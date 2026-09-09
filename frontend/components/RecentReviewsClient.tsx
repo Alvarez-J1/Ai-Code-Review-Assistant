@@ -70,7 +70,7 @@ export function RecentReviewsClient({
         <ul className="space-y-3">
           {items.map((review) => (
             <li key={review.review_id}>
-              <Link className="block" href={`/reviews/${review.review_id}`}>
+              <Link aria-label={reviewLinkLabel(review)} className="block" href={`/reviews/${review.review_id}`}>
                 <ReviewListItem review={review} />
               </Link>
             </li>
@@ -90,4 +90,13 @@ export function RecentReviewsClient({
       ) : null}
     </section>
   );
+}
+
+function reviewLinkLabel(review: ReviewSessionSummary) {
+  if (review.input_type === "github" && review.repository_owner && review.repository_name) {
+    const pullRequest = review.pull_request_number ? ` pull request #${review.pull_request_number}` : "";
+    return `Open review for ${review.repository_owner}/${review.repository_name}${pullRequest}`;
+  }
+
+  return "Open review for pasted diff";
 }
