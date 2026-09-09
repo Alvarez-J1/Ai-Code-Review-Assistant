@@ -74,7 +74,7 @@ export function FindingsList({ findings, githubUrl }: { findings: ReviewFinding[
         <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
           <div>
             <h2 className="text-lg font-semibold text-ink">Findings</h2>
-            <p className="text-sm text-muted">
+            <p aria-atomic="true" aria-live="polite" className="text-sm text-muted">
               Showing {visibleFindings.length} of {findings.length}
             </p>
           </div>
