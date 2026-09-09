@@ -109,8 +109,10 @@ export function ReviewForm() {
               className="min-h-[360px] w-full resize-y rounded-md border border-line bg-white px-3 py-3 font-mono text-sm leading-6 text-ink shadow-sm transition placeholder:text-slate-400 focus:border-brand"
               disabled={isSubmitting}
               id="diff-input"
+              name="diff"
               onChange={(event) => setDiff(event.target.value)}
               placeholder={DIFF_PLACEHOLDER}
+              required
               value={diff}
             />
           </div>
