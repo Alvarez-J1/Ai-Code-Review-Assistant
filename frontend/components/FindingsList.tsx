@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useId, useMemo, useState } from "react";
 
 import type { FindingCategory, ReviewFinding, Severity } from "@/types/reviews";
 
@@ -34,6 +34,9 @@ export function FindingsList({ findings, githubUrl }: { findings: ReviewFinding[
   const [severity, setSeverity] = useState<Severity | "all">("all");
   const [category, setCategory] = useState<FindingCategory | "all">("all");
   const [file, setFile] = useState("all");
+  const severityFilterId = useId();
+  const categoryFilterId = useId();
+  const fileFilterId = useId();
 
   const files = useMemo(() => Array.from(new Set(findings.map((finding) => finding.file))).sort(), [findings]);
   const visibleFindings = useMemo(
@@ -76,12 +79,13 @@ export function FindingsList({ findings, githubUrl }: { findings: ReviewFinding[
             </p>
           </div>
           <div className="grid gap-3 sm:grid-cols-3 lg:min-w-[680px]">
-            <FilterSelect label="Severity" onChange={setSeverity} options={severityOptions} value={severity} />
-            <FilterSelect label="Category" onChange={setCategory} options={categoryOptions} value={category} />
-            <label className="space-y-1 text-sm font-medium text-ink">
+            <FilterSelect id={severityFilterId} label="Severity" onChange={setSeverity} options={severityOptions} value={severity} />
+            <FilterSelect id={categoryFilterId} label="Category" onChange={setCategory} options={categoryOptions} value={category} />
+            <label className="space-y-1 text-sm font-medium text-ink" htmlFor={fileFilterId}>
               <span>File</span>
               <select
                 className="w-full rounded-md border border-line bg-white px-3 py-2 text-sm text-ink"
+                id={fileFilterId}
                 onChange={(event) => setFile(event.target.value)}
                 value={file}
               >
@@ -120,21 +124,24 @@ export function FindingsList({ findings, githubUrl }: { findings: ReviewFinding[
 }
 
 function FilterSelect<T extends string>({
+  id,
   label,
   onChange,
   options,
   value
 }: {
+  id: string;
   label: string;
   onChange: (value: T) => void;
   options: T[];
   value: T;
 }) {
   return (
-    <label className="space-y-1 text-sm font-medium text-ink">
+    <label className="space-y-1 text-sm font-medium text-ink" htmlFor={id}>
       <span>{label}</span>
       <select
         className="w-full rounded-md border border-line bg-white px-3 py-2 text-sm text-ink"
+        id={id}
         onChange={(event) => onChange(event.target.value as T)}
         value={value}
       >
