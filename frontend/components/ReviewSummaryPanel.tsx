@@ -42,13 +42,13 @@ export function ReviewSummaryPanel({ review }: { review: ReviewResponse }) {
         </div>
       ) : null}
 
-      <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+      <dl className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
         <Metric label="Files reviewed" value={review.stats.files_reviewed} />
         <Metric label="Total findings" value={review.stats.findings} />
         <Metric label="High severity" severity="high" value={review.stats.high_severity} />
         <Metric label="Medium severity" severity="medium" value={review.stats.medium_severity} />
         <Metric label="Low severity" severity="low" value={review.stats.low_severity} />
-      </div>
+      </dl>
     </section>
   );
 }
@@ -85,8 +85,8 @@ function Metric({ label, severity, value }: { label: string; severity?: Severity
   const accent = severity ? severityStyles[severity] : "border-line bg-panel text-ink";
   return (
     <div className={`rounded-lg border p-4 ${accent}`}>
-      <p className="text-sm font-medium">{label}</p>
-      <p className="mt-2 text-2xl font-semibold">{value}</p>
+      <dt className="text-sm font-medium">{label}</dt>
+      <dd className="mt-2 text-2xl font-semibold">{value}</dd>
     </div>
   );
 }
