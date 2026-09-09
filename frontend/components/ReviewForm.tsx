@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, useId, useState } from "react";
 import { useRouter } from "next/navigation";
 
 import { ApiError, createDiffReview, createGithubReview } from "@/lib/api";
@@ -19,6 +19,10 @@ index 1111111..2222222 100644
 
 export function ReviewForm() {
   const router = useRouter();
+  const diffTabId = useId();
+  const githubTabId = useId();
+  const diffPanelId = useId();
+  const githubPanelId = useId();
   const [mode, setMode] = useState<ReviewMode>("diff");
   const [diff, setDiff] = useState("");
   const [url, setUrl] = useState("");
@@ -49,10 +53,22 @@ export function ReviewForm() {
     <section className="rounded-lg border border-line bg-panel shadow-soft">
       <div className="border-b border-line px-4 pt-4 sm:px-6">
         <div aria-label="Review input type" className="flex w-full gap-2" role="tablist">
-          <TabButton active={mode === "diff"} disabled={isSubmitting} onClick={() => setMode("diff")}>
+          <TabButton
+            active={mode === "diff"}
+            controlsId={diffPanelId}
+            disabled={isSubmitting}
+            id={diffTabId}
+            onClick={() => setMode("diff")}
+          >
             Paste Diff
           </TabButton>
-          <TabButton active={mode === "github"} disabled={isSubmitting} onClick={() => setMode("github")}>
+          <TabButton
+            active={mode === "github"}
+            controlsId={githubPanelId}
+            disabled={isSubmitting}
+            id={githubTabId}
+            onClick={() => setMode("github")}
+          >
             GitHub PR
           </TabButton>
         </div>
@@ -60,7 +76,7 @@ export function ReviewForm() {
 
       <form className="space-y-5 p-4 sm:p-6" onSubmit={submitReview}>
         {mode === "diff" ? (
-          <div className="space-y-2">
+          <div aria-labelledby={diffTabId} className="space-y-2" id={diffPanelId} role="tabpanel">
             <label className="text-sm font-semibold text-ink" htmlFor="diff-input">
               Unified git diff
             </label>
@@ -75,7 +91,7 @@ export function ReviewForm() {
             />
           </div>
         ) : (
-          <div className="space-y-2">
+          <div aria-labelledby={githubTabId} className="space-y-2" id={githubPanelId} role="tabpanel">
             <label className="text-sm font-semibold text-ink" htmlFor="github-url">
               GitHub pull request URL
             </label>
@@ -123,16 +139,21 @@ export function ReviewForm() {
 function TabButton({
   active,
   children,
+  controlsId,
   disabled,
+  id,
   onClick
 }: {
   active: boolean;
   children: React.ReactNode;
+  controlsId: string;
   disabled: boolean;
+  id: string;
   onClick: () => void;
 }) {
   return (
     <button
+      aria-controls={controlsId}
       aria-selected={active}
       className={`rounded-t-md border border-b-0 px-4 py-2.5 text-sm font-semibold transition ${
         active
@@ -140,6 +161,7 @@ function TabButton({
           : "border-transparent bg-transparent text-muted hover:bg-slate-100 hover:text-ink"
       }`}
       disabled={disabled}
+      id={id}
       onClick={onClick}
       role="tab"
       type="button"
