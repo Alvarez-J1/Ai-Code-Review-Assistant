@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, KeyboardEvent, RefObject, useId, useRef, useState } from "react";
+import { FormEvent, KeyboardEvent, RefObject, useEffect, useId, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 
 import { ApiError, createDiffReview, createGithubReview } from "@/lib/api";
@@ -25,6 +25,7 @@ export function ReviewForm() {
   const githubPanelId = useId();
   const diffTabRef = useRef<HTMLButtonElement>(null);
   const githubTabRef = useRef<HTMLButtonElement>(null);
+  const errorRef = useRef<HTMLDivElement>(null);
   const [mode, setMode] = useState<ReviewMode>("diff");
   const [diff, setDiff] = useState("");
   const [url, setUrl] = useState("");
@@ -50,6 +51,12 @@ export function ReviewForm() {
       setIsSubmitting(false);
     }
   }
+
+  useEffect(() => {
+    if (error) {
+      errorRef.current?.focus();
+    }
+  }, [error]);
 
   function selectMode(nextMode: ReviewMode) {
     setMode(nextMode);
@@ -141,7 +148,13 @@ export function ReviewForm() {
         )}
 
         {error ? (
-          <div className="rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm font-medium text-red-900" id="review-error" role="alert">
+          <div
+            className="rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm font-medium text-red-900"
+            id="review-error"
+            ref={errorRef}
+            role="alert"
+            tabIndex={-1}
+          >
             {error}
           </div>
         ) : null}
