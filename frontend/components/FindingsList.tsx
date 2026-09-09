@@ -78,7 +78,8 @@ export function FindingsList({ findings, githubUrl }: { findings: ReviewFinding[
               Showing {visibleFindings.length} of {findings.length}
             </p>
           </div>
-          <div className="grid gap-3 sm:grid-cols-3 lg:min-w-[680px]">
+          <fieldset className="grid gap-3 sm:grid-cols-3 lg:min-w-[680px]">
+            <legend className="sr-only">Filter findings</legend>
             <FilterSelect id={severityFilterId} label="Severity" onChange={setSeverity} options={severityOptions} value={severity} />
             <FilterSelect id={categoryFilterId} label="Category" onChange={setCategory} options={categoryOptions} value={category} />
             <label className="space-y-1 text-sm font-medium text-ink" htmlFor={fileFilterId}>
@@ -97,7 +98,7 @@ export function FindingsList({ findings, githubUrl }: { findings: ReviewFinding[
                 ))}
               </select>
             </label>
-          </div>
+          </fieldset>
           <button
             className="rounded-md border border-line bg-white px-3 py-2 text-sm font-semibold text-ink transition hover:border-brand hover:text-brand"
             onClick={resetFilters}
