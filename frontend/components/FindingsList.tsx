@@ -197,9 +197,10 @@ function FindingCard({ finding, githubUrl }: { finding: ReviewFinding; githubUrl
       </div>
       {githubUrl ? (
         <a
+          aria-label={`Open GitHub pull request for finding: ${finding.title}`}
           className="mt-4 inline-flex rounded-md border border-line bg-white px-3 py-2 text-sm font-semibold text-ink transition hover:border-brand hover:text-brand"
           href={githubUrl}
-          rel="noreferrer"
+          rel="noopener noreferrer"
           target="_blank"
         >
           Open PR on GitHub
