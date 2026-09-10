@@ -15,8 +15,8 @@ export function LoadingSteps({ active }: { active: boolean }) {
 
   useEffect(() => {
     if (!active) {
-      setStepIndex(0);
-      return;
+      const id = window.setTimeout(() => setStepIndex(0), 0);
+      return () => window.clearTimeout(id);
     }
 
     const id = window.setInterval(() => {
