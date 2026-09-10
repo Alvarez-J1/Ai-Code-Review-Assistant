@@ -53,7 +53,11 @@ export function RecentReviewsClient({
           </h1>
           <p className="mt-1 text-sm text-muted">Stored review sessions from the backend.</p>
         </div>
-        <Link className="rounded-md bg-ink px-4 py-2 text-sm font-semibold text-white transition hover:bg-brand" href="/">
+        <Link
+          aria-label="Start a new code review"
+          className="rounded-md bg-ink px-4 py-2 text-sm font-semibold text-white transition hover:bg-brand"
+          href="/"
+        >
           New Review
         </Link>
       </div>
