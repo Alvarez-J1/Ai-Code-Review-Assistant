@@ -85,7 +85,8 @@ export function ReviewDetailClient({ reviewId }: { reviewId: string }) {
 
 function DetailSkeleton() {
   return (
-    <div className="space-y-4" aria-live="polite">
+    <div aria-live="polite" className="space-y-4" role="status">
+      <p className="sr-only">Loading review details</p>
       <div className="rounded-lg border border-line bg-panel p-6">
         <div className="h-5 w-40 animate-pulse rounded bg-slate-200" />
         <div className="mt-4 h-8 w-72 max-w-full animate-pulse rounded bg-slate-200" />
