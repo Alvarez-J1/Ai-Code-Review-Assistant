@@ -32,7 +32,7 @@ export function AppShell({ children }: AppShellProps) {
           <PrimaryNav />
         </div>
       </header>
-      <main className="mx-auto w-full max-w-6xl px-4 py-6 sm:px-6 lg:px-8" id="main-content">
+      <main className="mx-auto w-full max-w-6xl px-4 py-6 sm:px-6 lg:px-8" id="main-content" tabIndex={-1}>
         {children}
       </main>
     </div>
