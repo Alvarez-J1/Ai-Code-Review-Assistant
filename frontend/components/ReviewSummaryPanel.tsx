@@ -23,8 +23,10 @@ export function ReviewSummaryPanel({ review }: { review: ReviewResponse }) {
       </div>
 
       {review.github_metadata ? (
-        <div className="rounded-lg border border-line bg-panel p-5">
-          <p className="text-sm font-semibold text-muted">GitHub pull request</p>
+        <div aria-labelledby="github-pull-request-heading" className="rounded-lg border border-line bg-panel p-5">
+          <p className="text-sm font-semibold text-muted" id="github-pull-request-heading">
+            GitHub pull request
+          </p>
           <div className="mt-2 flex flex-col gap-1">
             <a
               aria-label={`Open GitHub pull request ${review.github_metadata.owner}/${review.github_metadata.repo} #${review.github_metadata.pr_number}`}
