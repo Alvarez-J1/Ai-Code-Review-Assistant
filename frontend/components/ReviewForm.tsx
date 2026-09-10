@@ -80,7 +80,7 @@ export function ReviewForm() {
   return (
     <section className="rounded-lg border border-line bg-panel shadow-soft">
       <div className="border-b border-line px-4 pt-4 sm:px-6">
-        <div aria-label="Review input type" className="flex w-full gap-2" role="tablist">
+        <div aria-label="Review input type" aria-orientation="horizontal" className="flex w-full gap-2" role="tablist">
           <TabButton
             active={mode === "diff"}
             controlsId={diffPanelId}
