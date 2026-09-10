@@ -54,8 +54,10 @@ export function FindingsList({ findings, githubUrl }: { findings: ReviewFinding[
 
   if (findings.length === 0) {
     return (
-      <section className="rounded-lg border border-line bg-panel p-6">
-        <h2 className="text-lg font-semibold text-ink">Findings</h2>
+      <section aria-labelledby={findingsHeadingId} className="rounded-lg border border-line bg-panel p-6">
+        <h2 className="text-lg font-semibold text-ink" id={findingsHeadingId}>
+          Findings
+        </h2>
         <p className="mt-2 text-sm leading-6 text-muted">
           This review completed without findings. Keep an eye on test coverage and runtime behavior as the change evolves.
         </p>
