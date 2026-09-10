@@ -87,6 +87,7 @@ export function RecentReviewsClient({
 
       {hasMore ? (
         <button
+          aria-label="Load more recent reviews"
           className="w-full rounded-md border border-line bg-white px-4 py-3 text-sm font-semibold text-ink transition hover:border-brand hover:text-brand disabled:cursor-not-allowed disabled:text-muted"
           disabled={isLoadingMore}
           onClick={() => loadPage(offset)}
