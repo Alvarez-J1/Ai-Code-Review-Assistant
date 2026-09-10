@@ -165,8 +165,10 @@ function FilterSelect<T extends string>({
 }
 
 function FindingCard({ finding, githubUrl }: { finding: ReviewFinding; githubUrl?: string | null }) {
+  const titleId = useId();
+
   return (
-    <article className="rounded-lg border border-line bg-panel p-5 shadow-sm">
+    <article aria-labelledby={titleId} className="rounded-lg border border-line bg-panel p-5 shadow-sm">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <div className="min-w-0">
           <div className="flex flex-wrap items-center gap-2">
@@ -180,7 +182,9 @@ function FindingCard({ finding, githubUrl }: { finding: ReviewFinding; githubUrl
               {finding.source}
             </span>
           </div>
-          <h3 className="mt-3 text-lg font-semibold text-ink">{finding.title}</h3>
+          <h3 className="mt-3 text-lg font-semibold text-ink" id={titleId}>
+            {finding.title}
+          </h3>
           <p className="mt-2 break-anywhere font-mono text-sm text-muted">
             {finding.file}
             {lineLabel(finding)}
