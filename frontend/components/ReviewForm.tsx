@@ -106,7 +106,7 @@ export function ReviewForm() {
         </div>
       </div>
 
-      <form aria-busy={isSubmitting} className="space-y-5 p-4 sm:p-6" onSubmit={submitReview}>
+      <form aria-busy={isSubmitting} className="space-y-5 p-4 sm:p-6" noValidate onSubmit={submitReview}>
         {mode === "diff" ? (
           <div aria-labelledby={diffTabId} className="space-y-2" id={diffPanelId} role="tabpanel">
             <label className="text-sm font-semibold text-ink" htmlFor="diff-input">
