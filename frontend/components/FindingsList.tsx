@@ -4,8 +4,8 @@ import { useId, useMemo, useState } from "react";
 
 import type { FindingCategory, ReviewFinding, Severity } from "@/types/reviews";
 
-const severityOptions: Array<Severity | "all"> = ["all", "high", "medium", "low"];
-const categoryOptions: Array<FindingCategory | "all"> = [
+const severityOptions: ReadonlyArray<Severity | "all"> = ["all", "high", "medium", "low"];
+const categoryOptions: ReadonlyArray<FindingCategory | "all"> = [
   "all",
   "bug",
   "edge_case",
@@ -142,7 +142,7 @@ function FilterSelect<T extends string>({
   id: string;
   label: string;
   onChange: (value: T) => void;
-  options: T[];
+  options: ReadonlyArray<T>;
   value: T;
 }) {
   return (
