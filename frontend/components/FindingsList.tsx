@@ -176,6 +176,7 @@ function FindingCard({ finding, githubUrl }: { finding: ReviewFinding; githubUrl
               Severity: {finding.severity}
             </li>
             <li className="rounded-md border border-line bg-slate-50 px-2 py-1 text-xs font-semibold uppercase text-muted">
+              <span className="sr-only">Category: </span>
               {categoryLabels[finding.category]}
             </li>
             <li className="rounded-md border border-line bg-slate-50 px-2 py-1 text-xs font-semibold uppercase text-muted">
