@@ -37,6 +37,7 @@ export function FindingsList({ findings, githubUrl }: { findings: ReviewFinding[
   const severityFilterId = useId();
   const categoryFilterId = useId();
   const fileFilterId = useId();
+  const findingsHeadingId = useId();
 
   const files = useMemo(() => Array.from(new Set(findings.map((finding) => finding.file))).sort(), [findings]);
   const visibleFindings = useMemo(
@@ -69,11 +70,13 @@ export function FindingsList({ findings, githubUrl }: { findings: ReviewFinding[
   }
 
   return (
-    <section className="space-y-4">
+    <section aria-labelledby={findingsHeadingId} className="space-y-4">
       <div className="rounded-lg border border-line bg-panel p-4">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
           <div>
-            <h2 className="text-lg font-semibold text-ink">Findings</h2>
+            <h2 className="text-lg font-semibold text-ink" id={findingsHeadingId}>
+              Findings
+            </h2>
             <p aria-atomic="true" aria-live="polite" className="text-sm text-muted">
               Showing {visibleFindings.length} of {findings.length}
             </p>
