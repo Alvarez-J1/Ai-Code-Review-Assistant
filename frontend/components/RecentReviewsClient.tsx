@@ -69,7 +69,7 @@ export function RecentReviewsClient({
       ) : null}
 
       {items.length === 0 && !error ? (
-        <div className="rounded-lg border border-dashed border-line bg-panel p-8 text-center">
+        <div className="rounded-lg border border-dashed border-line bg-panel p-8 text-center" role="status">
           <h2 className="text-lg font-semibold text-ink">No reviews yet</h2>
           <p className="mt-2 text-sm text-muted">Create a pasted-diff or GitHub PR review and it will appear here.</p>
         </div>
