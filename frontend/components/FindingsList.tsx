@@ -221,7 +221,7 @@ function FindingCard({ finding, githubUrl }: { finding: ReviewFinding; githubUrl
   );
 }
 
-function lineLabel(finding: ReviewFinding) {
+function lineLabel(finding: ReviewFinding): string {
   if (!finding.line) {
     return "";
   }
@@ -231,7 +231,7 @@ function lineLabel(finding: ReviewFinding) {
   return `:${finding.line}`;
 }
 
-function labelFor(value: string) {
+function labelFor(value: string): string {
   if (value in categoryLabels) {
     return categoryLabels[value as FindingCategory];
   }
