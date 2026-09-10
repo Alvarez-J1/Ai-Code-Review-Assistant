@@ -17,7 +17,9 @@ export function ReviewSummaryPanel({ review }: { review: ReviewResponse }) {
               Review Results
             </h1>
           </div>
-          <p className="text-sm text-muted">{formatDate(review.created_at)}</p>
+          <time className="text-sm text-muted" dateTime={review.created_at}>
+            {formatDate(review.created_at)}
+          </time>
         </div>
         <p className="mt-3 max-w-4xl text-base leading-7 text-ink">{review.summary}</p>
       </div>
