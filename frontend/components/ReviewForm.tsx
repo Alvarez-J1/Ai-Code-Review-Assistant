@@ -135,6 +135,7 @@ export function ReviewForm() {
               className="w-full rounded-md border border-line bg-white px-3 py-3 font-mono text-sm text-ink shadow-sm transition placeholder:text-slate-400 focus:border-brand"
               disabled={isSubmitting}
               id="github-url"
+              inputMode="url"
               name="github-url"
               onChange={(event) => setUrl(event.target.value)}
               placeholder="https://github.com/owner/repository/pull/123"
