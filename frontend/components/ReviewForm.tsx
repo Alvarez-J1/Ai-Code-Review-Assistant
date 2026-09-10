@@ -132,6 +132,8 @@ export function ReviewForm() {
             </label>
             <input
               aria-describedby={error ? "review-error github-note" : "github-note"}
+              autoCapitalize="none"
+              autoCorrect="off"
               className="w-full rounded-md border border-line bg-white px-3 py-3 font-mono text-sm text-ink shadow-sm transition placeholder:text-slate-400 focus:border-brand"
               disabled={isSubmitting}
               id="github-url"
