@@ -164,10 +164,11 @@ export function ReviewForm() {
         <LoadingSteps active={isSubmitting} />
 
         <div className="flex flex-col gap-3 border-t border-line pt-5 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-sm text-muted">
+          <p className="text-sm text-muted" id="review-save-note">
             Reviews are saved by the backend after analysis, so results can be reopened from Recent Reviews.
           </p>
           <button
+            aria-describedby="review-save-note"
             className="rounded-md bg-ink px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-brand disabled:cursor-not-allowed disabled:bg-slate-400"
             disabled={isSubmitting}
             type="submit"
