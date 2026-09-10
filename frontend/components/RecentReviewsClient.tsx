@@ -59,7 +59,11 @@ export function RecentReviewsClient({
       </div>
 
       {error ? (
-        <div className="rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm font-medium text-red-900" role="alert">
+        <div
+          aria-atomic="true"
+          className="rounded-md border border-red-200 bg-red-50 px-4 py-3 text-sm font-medium text-red-900"
+          role="alert"
+        >
           {error}
         </div>
       ) : null}
