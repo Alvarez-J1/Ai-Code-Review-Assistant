@@ -199,16 +199,16 @@ function FindingCard({ finding, githubUrl }: { finding: ReviewFinding; githubUrl
           {Math.round(finding.confidence * 100)}% confidence
         </div>
       </div>
-      <div className="mt-4 grid gap-4 md:grid-cols-2">
+      <dl className="mt-4 grid gap-4 md:grid-cols-2">
         <div>
-          <p className="text-sm font-semibold text-ink">Explanation</p>
-          <p className="mt-1 text-sm leading-6 text-muted">{finding.explanation}</p>
+          <dt className="text-sm font-semibold text-ink">Explanation</dt>
+          <dd className="mt-1 text-sm leading-6 text-muted">{finding.explanation}</dd>
         </div>
         <div>
-          <p className="text-sm font-semibold text-ink">Suggested improvement</p>
-          <p className="mt-1 text-sm leading-6 text-muted">{finding.suggestion}</p>
+          <dt className="text-sm font-semibold text-ink">Suggested improvement</dt>
+          <dd className="mt-1 text-sm leading-6 text-muted">{finding.suggestion}</dd>
         </div>
-      </div>
+      </dl>
       {githubUrl ? (
         <a
           aria-label={`Open GitHub pull request for finding: ${finding.title}`}
