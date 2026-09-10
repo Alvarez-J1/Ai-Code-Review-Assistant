@@ -81,7 +81,7 @@ export function ReviewListItem({ review }: { review: ReviewSessionSummary }) {
       </div>
       <div className="shrink-0 text-sm text-muted sm:text-right">
         <p>{review.stats.findings} findings</p>
-        <p>{formatDate(review.created_at)}</p>
+        <time dateTime={review.created_at}>{formatDate(review.created_at)}</time>
       </div>
     </div>
   );
