@@ -192,7 +192,10 @@ function FindingCard({ finding, githubUrl }: { finding: ReviewFinding; githubUrl
             {lineLabel(finding)}
           </p>
         </div>
-        <div className="shrink-0 rounded-md border border-line bg-slate-50 px-3 py-2 text-sm font-semibold text-ink">
+        <div
+          aria-label={`Confidence ${Math.round(finding.confidence * 100)} percent`}
+          className="shrink-0 rounded-md border border-line bg-slate-50 px-3 py-2 text-sm font-semibold text-ink"
+        >
           {Math.round(finding.confidence * 100)}% confidence
         </div>
       </div>
