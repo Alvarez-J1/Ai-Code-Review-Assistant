@@ -69,6 +69,7 @@ export function ReviewListItem({ review }: { review: ReviewSessionSummary }) {
       <div className="min-w-0 space-y-1">
         <ul className="flex flex-wrap items-center gap-2">
           <li className={`rounded-md border px-2 py-1 text-xs font-semibold uppercase ${riskStyles[review.risk_level]}`}>
+            <span className="sr-only">Risk level: </span>
             {review.risk_level}
           </li>
           <li className="rounded-md border border-line bg-slate-50 px-2 py-1 text-xs font-semibold uppercase text-muted">
