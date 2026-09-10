@@ -67,14 +67,14 @@ export function ReviewListItem({ review }: { review: ReviewSessionSummary }) {
   return (
     <div className="flex flex-col gap-3 rounded-lg border border-line bg-panel p-4 transition hover:border-brand hover:shadow-soft sm:flex-row sm:items-start sm:justify-between">
       <div className="min-w-0 space-y-1">
-        <div className="flex flex-wrap items-center gap-2">
-          <span className={`rounded-md border px-2 py-1 text-xs font-semibold uppercase ${riskStyles[review.risk_level]}`}>
+        <ul className="flex flex-wrap items-center gap-2">
+          <li className={`rounded-md border px-2 py-1 text-xs font-semibold uppercase ${riskStyles[review.risk_level]}`}>
             {review.risk_level}
-          </span>
-          <span className="rounded-md border border-line bg-slate-50 px-2 py-1 text-xs font-semibold uppercase text-muted">
+          </li>
+          <li className="rounded-md border border-line bg-slate-50 px-2 py-1 text-xs font-semibold uppercase text-muted">
             {review.input_type}
-          </span>
-        </div>
+          </li>
+        </ul>
         <p className="break-anywhere text-base font-semibold text-ink">{label}</p>
         {review.pull_request_title ? <p className="break-anywhere text-sm text-muted">{review.pull_request_title}</p> : null}
         <p className="line-clamp-2 text-sm leading-6 text-muted">{review.summary}</p>
