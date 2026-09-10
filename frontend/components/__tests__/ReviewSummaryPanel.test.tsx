@@ -42,7 +42,7 @@ describe("ReviewSummaryPanel", () => {
     expect(screen.getByText("Reviewed three files and found four issues.")).toBeInTheDocument();
     expect(screen.getByText("Files reviewed")).toBeInTheDocument();
     expect(screen.getByText("High severity")).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: "acme/review-app #12" })).toHaveAttribute(
+    expect(screen.getByRole("link", { name: "Open GitHub pull request acme/review-app #12" })).toHaveAttribute(
       "href",
       "https://github.com/acme/review-app/pull/12"
     );
