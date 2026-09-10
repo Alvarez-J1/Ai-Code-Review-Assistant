@@ -8,12 +8,14 @@ const riskStyles: Record<RiskLevel, string> = {
 
 export function ReviewSummaryPanel({ review }: { review: ReviewResponse }) {
   return (
-    <section className="space-y-4">
+    <section aria-labelledby="review-results-heading" className="space-y-4">
       <div className={`rounded-lg border px-5 py-4 ${riskStyles[review.risk_level]}`}>
         <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
           <div>
             <p className="text-sm font-semibold uppercase tracking-wide">Risk: {review.risk_level}</p>
-            <h1 className="mt-1 text-2xl font-semibold text-ink">Review Results</h1>
+            <h1 className="mt-1 text-2xl font-semibold text-ink" id="review-results-heading">
+              Review Results
+            </h1>
           </div>
           <p className="text-sm text-muted">{formatDate(review.created_at)}</p>
         </div>
