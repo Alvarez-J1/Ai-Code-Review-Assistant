@@ -139,6 +139,7 @@ export function ReviewForm() {
               onChange={(event) => setUrl(event.target.value)}
               placeholder="https://github.com/owner/repository/pull/123"
               required
+              spellCheck={false}
               type="url"
               autoComplete="url"
               value={url}
