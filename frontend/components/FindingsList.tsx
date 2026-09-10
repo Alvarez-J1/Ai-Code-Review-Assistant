@@ -171,17 +171,17 @@ function FindingCard({ finding, githubUrl }: { finding: ReviewFinding; githubUrl
     <article aria-labelledby={titleId} className="rounded-lg border border-line bg-panel p-5 shadow-sm">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <div className="min-w-0">
-          <div className="flex flex-wrap items-center gap-2">
-            <span className={`rounded-md border px-2 py-1 text-xs font-bold uppercase ${severityStyles[finding.severity]}`}>
+          <ul className="flex flex-wrap items-center gap-2">
+            <li className={`rounded-md border px-2 py-1 text-xs font-bold uppercase ${severityStyles[finding.severity]}`}>
               Severity: {finding.severity}
-            </span>
-            <span className="rounded-md border border-line bg-slate-50 px-2 py-1 text-xs font-semibold uppercase text-muted">
+            </li>
+            <li className="rounded-md border border-line bg-slate-50 px-2 py-1 text-xs font-semibold uppercase text-muted">
               {categoryLabels[finding.category]}
-            </span>
-            <span className="rounded-md border border-line bg-slate-50 px-2 py-1 text-xs font-semibold uppercase text-muted">
+            </li>
+            <li className="rounded-md border border-line bg-slate-50 px-2 py-1 text-xs font-semibold uppercase text-muted">
               {finding.source}
-            </span>
-          </div>
+            </li>
+          </ul>
           <h3 className="mt-3 text-lg font-semibold text-ink" id={titleId}>
             {finding.title}
           </h3>
