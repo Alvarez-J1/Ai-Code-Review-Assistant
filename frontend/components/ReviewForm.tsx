@@ -121,6 +121,7 @@ export function ReviewForm() {
               onChange={(event) => setDiff(event.target.value)}
               placeholder={DIFF_PLACEHOLDER}
               required
+              spellCheck={false}
               value={diff}
             />
           </div>
