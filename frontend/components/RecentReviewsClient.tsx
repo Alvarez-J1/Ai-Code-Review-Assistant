@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useId, useState } from "react";
 
 import { ReviewListItem } from "@/components/ReviewSummaryPanel";
 import { ApiError, listReviews } from "@/lib/api";
@@ -27,6 +27,7 @@ export function RecentReviewsClient({
   const [error, setError] = useState<string | null>(initialError);
   const [isLoadingMore, setIsLoadingMore] = useState(false);
   const [hasMore, setHasMore] = useState(initialHasMore);
+  const headingId = useId();
 
   async function loadPage(nextOffset: number) {
     setError(null);
@@ -44,10 +45,12 @@ export function RecentReviewsClient({
   }
 
   return (
-    <section className="space-y-4">
+    <section aria-labelledby={headingId} className="space-y-4">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <h1 className="text-2xl font-semibold text-ink">Recent Reviews</h1>
+          <h1 className="text-2xl font-semibold text-ink" id={headingId}>
+            Recent Reviews
+          </h1>
           <p className="mt-1 text-sm text-muted">Stored review sessions from the backend.</p>
         </div>
         <Link className="rounded-md bg-ink px-4 py-2 text-sm font-semibold text-white transition hover:bg-brand" href="/">
