@@ -88,14 +88,14 @@ function DetailSkeleton() {
     <div aria-live="polite" className="space-y-4" role="status">
       <p className="sr-only">Loading review details</p>
       <div className="rounded-lg border border-line bg-panel p-6">
-        <div className="h-5 w-40 animate-pulse rounded bg-slate-200" />
-        <div className="mt-4 h-8 w-72 max-w-full animate-pulse rounded bg-slate-200" />
-        <div className="mt-4 h-4 w-full animate-pulse rounded bg-slate-200" />
-        <div className="mt-2 h-4 w-3/4 animate-pulse rounded bg-slate-200" />
+        <div className="h-5 w-40 rounded bg-slate-200 motion-safe:animate-pulse" />
+        <div className="mt-4 h-8 w-72 max-w-full rounded bg-slate-200 motion-safe:animate-pulse" />
+        <div className="mt-4 h-4 w-full rounded bg-slate-200 motion-safe:animate-pulse" />
+        <div className="mt-2 h-4 w-3/4 rounded bg-slate-200 motion-safe:animate-pulse" />
       </div>
       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
         {Array.from({ length: 5 }).map((_, index) => (
-          <div className="h-24 animate-pulse rounded-lg bg-slate-200" key={index} />
+          <div className="h-24 rounded-lg bg-slate-200 motion-safe:animate-pulse" key={index} />
         ))}
       </div>
     </div>
