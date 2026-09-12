@@ -1,8 +1,7 @@
 # AI Code Review Assistant
+AI Code Review Assistant is a full-stack developer tool for reviewing pasted `git diff` output or GitHub pull requests. It combines deterministic static checks with structured OpenAI review, stores each completed review in PostgreSQL, and presents results in a polished Next.js interface. Built to be easy to demo, easy to run locally, and clear enough for recruiters or interviewers to understand quickly.
 
-AI Code Review Assistant is a full-stack developer tool for reviewing pasted `git diff` output or GitHub pull requests. It combines deterministic static checks with structured OpenAI review, stores each completed review in PostgreSQL, and presents results in a polished Next.js interface.
-
-Built to be easy to demo, easy to run locally, and clear enough for recruiters or interviewers to understand quickly.
+<img width="1672" height="941" alt="image" src="https://github.com/user-attachments/assets/8990254b-eacf-4895-b5df-a3c419071355" />
 
 ## Features
 
@@ -17,17 +16,6 @@ Built to be easy to demo, easy to run locally, and clear enough for recruiters o
 - Filter findings by severity, category, and file without refetching
 - Seed realistic demo reviews without calling OpenAI or GitHub
 - Run the full stack with Docker Compose
-
-## Screenshots
-
-Screenshot slots are documented in [docs/images/README.md](docs/images/README.md). Capture these after seeding demo data:
-
-- `docs/images/new-review.png`
-- `docs/images/github-review.png`
-- `docs/images/findings.png`
-- `docs/images/recent-reviews.png`
-
-No placeholder screenshots are committed.
 
 ## Tech Stack
 
@@ -302,22 +290,6 @@ Frontend tests use Vitest, React Testing Library, jsdom, and mocked API calls. T
 - `POST /api/reviews/github`
 - `GET /api/reviews/{review_id}`
 - `GET /api/reviews?limit=20&offset=0`
-
-## Deployment
-
-See [docs/deployment.md](docs/deployment.md) for a practical deployment path. A common setup is:
-
-- Frontend on Vercel
-- Backend on Render, Railway, Fly.io, or a container host
-- PostgreSQL on Neon, Supabase, Render Postgres, Railway, or another managed provider
-
-Deployment requires:
-
-- backend environment variables
-- frontend environment variables
-- a managed `DATABASE_URL`
-- an explicit `alembic upgrade head` migration step
-- `CORS_ALLOWED_ORIGINS` set to the deployed frontend origin
 
 ## Security And Privacy
 
